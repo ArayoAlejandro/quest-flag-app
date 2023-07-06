@@ -10,7 +10,8 @@
   ],
   "scripts": {
     "prepare": "husky install",
-    "start": "pnpm --filter @app/server build  && pnpm --filter @app/client build"
+    "build": "pnpm --filter @app/server build  && pnpm --filter @app/client build",
+    "start": "pnpm --filter @app/server start"
   },
   "keywords": [],
   "author": "",
