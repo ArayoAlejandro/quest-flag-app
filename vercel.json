@@ -1,6 +1,6 @@
 {
     "functions": {
-      "api/app.js": {
+      "@app/server/dist/index.js": {
         "memory": 1024,
         "maxDuration": 10
       }
