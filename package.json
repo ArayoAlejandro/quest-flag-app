@@ -5,8 +5,8 @@
   "main": "index.js",
 
   "workspaces":[
-    "api",
-    "frontend"
+    "api/*",
+    "frontend/*"
   ],
   "scripts": {
     "prepare": "husky install",
