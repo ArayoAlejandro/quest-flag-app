@@ -6,7 +6,7 @@
 
   "workspaces":[
     "api",
-    "client"
+    "frontend"
   ],
   "scripts": {
     "prepare": "husky install",
