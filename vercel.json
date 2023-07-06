@@ -1,8 +1,18 @@
 {
+    "functions": {
+      "api/app.js": {
+        "memory": 1024,
+        "maxDuration": 10
+      }
+    },
     "routes": [
-        {
-            "src": "/.*",
-            "dest": "@app/server/dist"
-        }
+      {
+        "src": "/",
+        "dest": "@client/client/dist"
+      },
+      {
+        "src": "/.*",
+        "dest": "@app/server/dist/index.js"
+      }
     ]
-}
+  }
