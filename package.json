@@ -3,9 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "prepare": "husky install"
 
+  "workspaces":[
+    "@app/server",
+    "@app/client"
+  ],
+  "scripts": {
+    "prepare": "husky install",
+    "start": "pnpm --filter @app/server build  && pnpm --filter @app/client build"
   },
   "keywords": [],
   "author": "",

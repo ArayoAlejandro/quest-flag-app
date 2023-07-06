@@ -1,7 +1,12 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-cd  @app/server
+cd @app/client
+pnpm run build
+pnpm run add-build
+
+cd  ./../server
+
 pnpm run ts.check
 pnpm run build
 pnpm run add-build

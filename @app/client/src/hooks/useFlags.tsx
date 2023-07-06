@@ -4,7 +4,7 @@ import { FlagsQuestContext, type FlagsQuestContextType } from '../context/FlagsQ
 export const useFlags = (): FlagsQuestContextType => {
   const context = useContext(FlagsQuestContext)
 
-  if (context === undefined) {
+  if (context === null) {
     throw new Error('useFlags must be used within a FlagProvider')
   }
 

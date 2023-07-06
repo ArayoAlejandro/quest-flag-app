@@ -14,7 +14,7 @@ export interface FlagsQuestContextType {
   isLastQuest: boolean
 }
 
-export const FlagsQuestContext = createContext<FlagsQuestContextType>([])
+export const FlagsQuestContext = createContext<FlagsQuestContextType | null>(null)
 
 export const FlagsQuestProvider = ({ children, maxQuest = 5 }: { children: JSX.Element, maxQuest?: number }): JSX.Element => {
   const maxQuestions = maxQuest
@@ -26,7 +26,7 @@ export const FlagsQuestProvider = ({ children, maxQuest = 5 }: { children: JSX.E
 
   useEffect(() => {
     setShuffledCountries([...countries].sort(() => 0.5 - Math.random()).slice(0, maxQuestions))
-  }, [countries])
+  }, [countries, maxQuestions])
   const actualCountryQuest = shuffledCountries[actualQuestIndex]
   if (actualCountryQuest !== undefined && loading) setLoading(false)
 

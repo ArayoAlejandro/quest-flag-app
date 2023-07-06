@@ -23,7 +23,7 @@ export interface GameState {
   setStateGame: (gameState: typeof GAME_STATES[keyof typeof GAME_STATES]) => void
 }
 
-export const GameStateContext = createContext<GameState>([])
+export const GameStateContext = createContext<GameState | null>(null)
 
 export const GameStateProvider = ({ children }: { children: JSX.Element }): JSX.Element => {
   const [stateGame, setStateGame] = useState(GAME_STATES.GAME_START)
