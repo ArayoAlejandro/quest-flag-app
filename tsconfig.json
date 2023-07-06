@@ -24,10 +24,10 @@
   "files": [],
   "references": [
     {
-      "path": "@app/client"
+      "path": "fronted"
     },
     {
-      "path": "@app/server"
+      "path": "api"
     }
   ]
 }

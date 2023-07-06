@@ -1,6 +1,6 @@
 {
     "functions": {
-      "@app/server/dist/index.js": {
+      "api/dist/index.js": {
         "memory": 1024,
         "maxDuration": 10
       }
@@ -8,11 +8,11 @@
     "routes": [
       {
         "src": "/",
-        "dest": "@client/client/dist"
+        "dest": "frontend/dist"
       },
       {
         "src": "/.*",
-        "dest": "@app/server/dist/index.js"
+        "dest": "api/dist/index.js"
       }
     ]
   }

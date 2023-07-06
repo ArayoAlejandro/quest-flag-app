@@ -30,10 +30,10 @@
                 "ecmaFeatures": {
                     "jsx": true
                 },
-                "project": "./@app/client/tsconfig.json"
+                "project": "./frontend/tsconfig.json"
             },
             "files": [
-                "@app/client/**/*.+(ts|tsx)"
+                "frontend/**/*.+(ts|tsx)"
             ],
             "env": {
                 "browser": true
@@ -63,10 +63,10 @@
         },
         {
             "parserOptions": {
-                "project": "./@app/server/tsconfig.json"
+                "project": "./api/tsconfig.json"
             },
             "files": [
-                "@app/server/**/*.+(ts)"
+                "api/**/*.+(ts)"
             ],
             "env": {
                 "node": true
