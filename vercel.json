@@ -11,7 +11,7 @@
         "dest": "public"
       },
       {
-        "src": "/.*",
+        "src": "/api/.*",
         "dest": "api/dist/index.js"
       }
     ]
