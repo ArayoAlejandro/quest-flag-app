@@ -3,10 +3,13 @@
 
 cd frontend
 pnpm run build
-pnpm run add-build
 
 cd  ./../api
 
 pnpm run ts.check
 pnpm run build
-pnpm run add-build
+
+
+cd ./../
+
+pnpm run gadd
