@@ -4,8 +4,8 @@
 
 pnpm --filter frontend build
 
-pnpm --filter frontend ts.check
-pnpm --filter frontend build
+pnpm --filter api ts.check
+pnpm --filter api build
 
 
 pnpm run gadd
