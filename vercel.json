@@ -5,6 +5,12 @@
         "maxDuration": 10
       }
     },
+    "builds": [
+      {
+        "src": "package.json",
+        "use": "vercel-sapper"
+      }
+    ],
     "routes": [
       {
         "src": "/",
