@@ -5,12 +5,12 @@
   "main": "index.js",
 
   "workspaces":[
-    "api/*",
-    "frontend/*"
+    "api",
+    "frontend"
   ],
   "scripts": {
     "prepare": "husky install",
-    "build": "pnpm --filter \"api\" build  && pnpm --filter \"client\" build",
+    "build": "pnpm --filter \"api\" build  && pnpm --filter \"frontend\" build",
     "start": "pnpm --filter \"api\" start"
   },
   "keywords": [],
