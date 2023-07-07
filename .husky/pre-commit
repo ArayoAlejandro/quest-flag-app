@@ -1,15 +1,11 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-cd frontend
-pnpm run build
 
-cd  ./../api
+pnpm --filter frontend build
 
-pnpm run ts.check
-pnpm run build
+pnpm --filter frontend ts.check
+pnpm --filter frontend build
 
-
-cd ./../
 
 pnpm run gadd
