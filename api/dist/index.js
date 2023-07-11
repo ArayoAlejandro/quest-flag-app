@@ -14,18 +14,18 @@ app.use(express_1.default.json());
 app.get('/api/ping', (_req, res) => {
     res.send('Pong');
 });
-app.get('/api/score', (_req, res) => {
-    Score_1.Score.find()
+app.get('/api/score', async (_req, res) => {
+    await Score_1.Score.find()
         .then(score => res.json(score))
         .catch(error => { console.error(error); });
 });
-app.post('/api/score', (req, res) => {
+app.post('/api/score', async (req, res) => {
     const score = req.body;
     const newScore = new Score_1.Score({
         name: score.name,
         score: score.score
     });
-    newScore
+    await newScore
         .save()
         .then(saveScore => res.json(saveScore))
         .catch(error => { console.error(error); });
