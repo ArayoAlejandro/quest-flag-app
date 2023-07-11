@@ -7,12 +7,12 @@
     },
     "routes": [
       {
-        "src": "/",
-        "dest": "public"
-      },
-      {
         "src": "/api/.*",
         "dest": "api/dist/index.js"
+      },
+      {
+        "src": "/.*",
+        "dest": "public"
       }
     ]
   }

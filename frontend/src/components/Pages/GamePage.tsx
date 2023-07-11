@@ -7,7 +7,7 @@ export const GamePage = (): JSX.Element => {
   const { score } = useScore()
 
   return loading
-    ? <h1>Loading</h1>
+    ? <h2>Loading</h2>
     : <div className='game'>
 
         <h2>¿A que país pertenece esta bandera?</h2>

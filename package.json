@@ -11,7 +11,8 @@
   "scripts": {
     "prepare": "husky install",
     "build": "pnpm --filter \"api\" build  && pnpm --filter \"frontend\" build",
-    "start": "pnpm --filter \"api\" start",
+    "dev:front": "pnpm --filter \"frontend\" dev",
+    "dev:api": "pnpm --filter \"api\" dev",
     "gadd": "git add ."
   },
   "keywords": [],
