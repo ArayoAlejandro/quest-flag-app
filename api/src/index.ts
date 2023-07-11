@@ -7,6 +7,11 @@ connectToDatabase()
 const app = express()
 app.use(cors())
 app.use(express.json())
+
+app.get('/api/ping', (_req: Request, res: Response) => {
+  res.send('Pong')
+})
+
 app.get('/api/score', (_req: Request, res: Response) => {
   Score.find()
     .then(score => res.json(score))
