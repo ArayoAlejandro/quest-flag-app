@@ -13,4 +13,9 @@ scoreSchema.set('toJSON', {
   }
 })
 
-export const Score = model('Score', scoreSchema)
+export const ScoreAll = model('ScoreAll', scoreSchema)
+export const ScoreEurope = model('ScoreEurope', scoreSchema)
+export const ScoreAmerica = model('ScoreAmerica', scoreSchema)
+export const ScoreOceania = model('ScoreOcenia', scoreSchema)
+export const ScoreAsia = model('ScoreAsia', scoreSchema)
+export const ScoreAfrica = model('ScoreAfrica', scoreSchema)

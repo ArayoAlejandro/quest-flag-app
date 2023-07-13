@@ -7,7 +7,6 @@ import { FlagsQuestProvider } from './context/FlagsQuest'
 
 function App (): JSX.Element {
   const { actualPage } = useGameState()
-  console.log(process.env.NODE_ENV)
 
   return (
     <FlagsQuestProvider>

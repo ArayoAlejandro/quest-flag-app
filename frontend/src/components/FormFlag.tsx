@@ -8,8 +8,9 @@ import { useScore } from '../hooks/useScore'
 
 export const FormFlag = (): JSX.Element => {
   const { addAnswerNameFlag, countries, isLastQuest, actualCountryQuest } = useFlags()
-  const { setStateGame } = useGameState()
+  const { changeStateGame } = useGameState()
   const { addScorePoints } = useScore()
+
   const [input, setInput] = useState<string>('')
 
   const handleSubmit = ({ e, input }: { e: React.FormEvent, input: string }): void => {
@@ -17,7 +18,7 @@ export const FormFlag = (): JSX.Element => {
     addAnswerNameFlag(input)
     setInput('')
     if (input === actualCountryQuest.translations.spa.common) addScorePoints()
-    if (isLastQuest) setStateGame(GAME_STATES.GAME_FINISH)
+    if (isLastQuest) changeStateGame(GAME_STATES.GAME_FINISH)
   }
 
   const nameFlags: string[] = countries.map(country => country.translations.spa.common).sort()

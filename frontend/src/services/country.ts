@@ -1,21 +1,14 @@
 import { type CountryType } from '../types/CountryType'
+import { type RegionType } from '../types/RegionsType'
 
-export const fetchRegionCountry = async (nameCountry: string): Promise<CountryType[]> => {
+export const getRegionCountry = async (nameCountry: RegionType): Promise<CountryType[]> => {
   return await fetch(`https://restcountries.com/v3.1/region/${nameCountry}`)
     .then(async data => await data.json())
     .then(data => data)
 }
 
-export const fetchAllCountry = async (): Promise<CountryType[]> => {
+export const getAllCountry = async (): Promise<CountryType[]> => {
   return await fetch('https://restcountries.com/v3.1/all')
     .then(async data => await data.json())
     .then(data => data)
-}
-
-export const REGIONS = {
-  europe: 'europe',
-  asia: 'asia',
-  oceania: 'oceania',
-  africa: 'africa',
-  america: 'america'
 }

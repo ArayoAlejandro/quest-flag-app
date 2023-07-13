@@ -1,7 +1,8 @@
 import { createContext, useCallback, useEffect, useState } from 'react'
 
 export interface ScoreContextType {
-  setActiveScore: (stateScore: boolean) => void
+  activateScore: () => void
+  deactivateScore: () => void
   addScorePoints: (scorePoints?: number) => void
   score: number
 }
@@ -14,6 +15,7 @@ interface Props {
   correctAnswerScoreDefault?: number
   lessScoreSecond?: number
 }
+
 export const ScoreProvider = ({
   children,
   initScore = 1000,
@@ -23,8 +25,8 @@ export const ScoreProvider = ({
   const [score, setScore] = useState<number>(initScore)
   const [activeScore, setActiveScore] = useState<boolean>(false)
 
-  type Prop = () => void
-  const timerFunction = ({ isActive }: { isActive: boolean }): Prop => {
+  type timerFunctionProp = () => void
+  const timerFunction = ({ isActive }: { isActive: boolean }): timerFunctionProp => {
     if (!isActive) return () => '_'
 
     const timer = setTimeout(() => {
@@ -44,11 +46,20 @@ export const ScoreProvider = ({
     setScore(prev => prev + scorePoints)
   }
 
+  const deactivateScore = () => {
+    setActiveScore(false)
+  }
+
+  const activateScore = () => {
+    setActiveScore(true)
+  }
+
   return (
     <ScoreContext.Provider value={
       {
         addScorePoints,
-        setActiveScore,
+        deactivateScore,
+        activateScore,
         score
       }}>
       {children}

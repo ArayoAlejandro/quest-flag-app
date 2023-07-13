@@ -17,13 +17,14 @@ const GAME_PAGE: Record<string, JSX.Element> = {
   GAME_START: <PlayPage />,
   GAME_SELECT_REGION: <RegionPage />,
   GAME_CURRENT: <GamePage />,
-  GAME_SCORE: <ScorePage/>,
+  GAME_SCORE: <ScorePage />,
   GAME_FINISH: <EndPage />
 }
 
 export interface GameState {
   actualPage: JSX.Element
-  setStateGame: (gameState: typeof GAME_STATES[keyof typeof GAME_STATES]) => void
+  changeStateGame: (gameState: typeof GAME_STATES[keyof typeof GAME_STATES]) => void
+  resetGame: () => void
 }
 
 export const GameStateContext = createContext<GameState | null>(null)
@@ -32,8 +33,16 @@ export const GameStateProvider = ({ children }: { children: JSX.Element }): JSX.
   const [stateGame, setStateGame] = useState(GAME_STATES.GAME_START)
   const actualPage = GAME_PAGE[stateGame]
 
+  const resetGame = () => {
+    setStateGame(GAME_STATES.GAME_START)
+  }
+
+  const changeStateGame = (gameState: typeof GAME_STATES[keyof typeof GAME_STATES]) => {
+    setStateGame(gameState)
+  }
+
   return (
-    <GameStateContext.Provider value={{ setStateGame, actualPage }}>
+    <GameStateContext.Provider value={{ changeStateGame, actualPage, resetGame }}>
       {children}
     </GameStateContext.Provider>
   )

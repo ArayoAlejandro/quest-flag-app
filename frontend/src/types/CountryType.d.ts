@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 export interface CountryType {
   name: Name
   tld?: string[]
@@ -36,26 +37,26 @@ export interface CountryType {
   postalCode?: PostalCode
 }
 
-export interface CapitalInfo {
+interface CapitalInfo {
   latlng?: number[]
 }
 
-export interface Car {
+interface Car {
   signs?: string[]
   side: keyof Side
 }
 
-export const Side = {
+const Side = {
   Left = 'left',
   Right = 'right'
 }
 
-export interface CoatOfArms {
+interface CoatOfArms {
   png?: string
   svg?: string
 }
 
-export const Continent = {
+const Continent = {
   Africa = 'Africa',
   Antarctica = 'Antarctica',
   Asia = 'Asia',
@@ -65,7 +66,7 @@ export const Continent = {
   SouthAmerica = 'South America'
 }
 
-export interface Currencies {
+interface Currencies {
   JOD?: Aed
   USD?: Aed
   RSD?: Aed
@@ -230,58 +231,58 @@ export interface Currencies {
   UYU?: Aed
 }
 
-export interface Aed {
+interface Aed {
   name: string
   symbol: string
 }
 
-export interface BAM {
+interface BAM {
   name: string
 }
 
-export interface Demonyms {
+interface Demonyms {
   eng: Eng
   fra?: Eng
 }
 
-export interface Eng {
+interface Eng {
   f: string
   m: string
 }
 
-export interface Flags {
+interface Flags {
   png: string
   svg: string
   alt?: string
 }
 
-export interface Idd {
+interface Idd {
   root?: string
   suffixes?: string[]
 }
 
-export interface Maps {
+interface Maps {
   googleMaps: string
   openStreetMaps: string
 }
 
-export interface Name {
+interface Name {
   common: string
   official: string
   nativeName: Record<any, Translation>
 }
 
-export interface Translation {
+interface Translation {
   official: string
   common: string
 }
 
-export interface PostalCode {
+interface PostalCode {
   format: string
   regex?: string
 }
 
-export const Region = {
+const Region = {
   Africa = 'Africa',
   Americas = 'Americas',
   Antarctic = 'Antarctic',
@@ -290,13 +291,13 @@ export const Region = {
   Oceania = 'Oceania'
 }
 
-export const StartOfWeek = {
+const StartOfWeek = {
   Monday = 'monday',
   Saturday = 'saturday',
   Sunday = 'sunday'
 }
 
-export const Status = {
+const Status = {
   OfficiallyAssigned = 'officially-assigned',
   UserAssigned = 'user-assigned'
 }

@@ -2,6 +2,8 @@ import { createContext, useEffect, useState } from 'react'
 import { type AnswerType } from '../types/AnswersType'
 
 import { type CountryType } from '../types/CountryType'
+import { type RegionType } from '../types/RegionsType'
+import { Region } from '../services/score'
 
 export interface FlagsQuestContextType {
   countries: CountryType[]
@@ -12,6 +14,9 @@ export interface FlagsQuestContextType {
   setCountries: (countries: CountryType[]) => void
   loading: boolean
   isLastQuest: boolean
+  regionGame: RegionType
+  setRegionGame: (region: RegionType) => void
+
 }
 
 export const FlagsQuestContext = createContext<FlagsQuestContextType | null>(null)
@@ -23,6 +28,7 @@ export const FlagsQuestProvider = ({ children, maxQuest = 5 }: { children: JSX.E
   const [shuffledCountries, setShuffledCountries] = useState<CountryType[]>([])
   const [actualQuestIndex, setActualQuestIndex] = useState<number>(0)
   const [loading, setLoading] = useState<boolean>(true)
+  const [regionGame, setRegionGame] = useState<RegionType>(Region.all)
 
   useEffect(() => {
     setShuffledCountries([...countries].sort(() => 0.5 - Math.random()).slice(0, maxQuestions))
@@ -60,7 +66,9 @@ export const FlagsQuestProvider = ({ children, maxQuest = 5 }: { children: JSX.E
       resetAnswers,
       setCountries,
       loading,
-      isLastQuest
+      isLastQuest,
+      regionGame,
+      setRegionGame
     }}>
       {children}
     </FlagsQuestContext.Provider>
