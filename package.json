@@ -9,24 +9,20 @@
     "frontend"
   ],
   "scripts": {
-    "prepare": "husky install",
     "build": "pnpm --filter \"api\" build  && pnpm --filter \"frontend\" build",
     "dev:front": "pnpm --filter \"frontend\" dev",
-    "dev:api": "pnpm --filter \"api\" dev",
-    "gadd": "git add ."
+    "dev:api": "pnpm --filter \"api\" dev"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "rimraf": "^5.0.1"
+  },
   "devDependencies": {
-
-    "rimraf": "^5.0.1",
-    "husky": "^8.0.3",
-
     "typescript": "^5.0.2",
     "@typescript-eslint/eslint-plugin": "^5.60.0",
     "@typescript-eslint/parser": "^5.60.0",
-    
     "eslint": "^8.38.0",
     "eslint-config-standard-with-typescript": "^36.0.0",
     "eslint-plugin-import": "^2.25.2",
