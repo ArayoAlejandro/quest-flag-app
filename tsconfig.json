@@ -20,14 +20,18 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "esModuleInterop": true,
+    
   },
   "files": [],
+  "include": [
+    "./api/*.ts"
+  ],
   "references": [
     {
       "path": "frontend"
     },
     {
-      "path": "api"
+      "path": "backend"
     }
   ]
 }

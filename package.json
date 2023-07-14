@@ -3,15 +3,14 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-
-  "workspaces":[
-    "api",
+  "workspaces": [
+    "backend",
     "frontend"
   ],
   "scripts": {
-    "build": "pnpm --filter \"api\" build  && pnpm --filter \"frontend\" build",
+    "build": "pnpm --filter \"backend\" build  && pnpm --filter \"frontend\" build",
     "dev:front": "pnpm --filter \"frontend\" dev",
-    "dev:api": "pnpm --filter \"api\" dev"
+    "dev:backend": "pnpm --filter \"backend\" dev"
   },
   "keywords": [],
   "author": "",
@@ -20,7 +19,6 @@
     "rimraf": "^5.0.1"
   },
   "devDependencies": {
-    "typescript": "^5.0.2",
     "@typescript-eslint/eslint-plugin": "^5.60.0",
     "@typescript-eslint/parser": "^5.60.0",
     "eslint": "^8.38.0",
@@ -30,6 +28,7 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.3.4"
+    "eslint-plugin-react-refresh": "^0.3.4",
+    "typescript": "^5.0.2"
   }
 }

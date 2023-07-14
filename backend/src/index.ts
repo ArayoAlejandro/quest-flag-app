@@ -12,7 +12,7 @@ app.use(cors())
 app.use(express.json())
 
 app.get('/api/ping', (_req: Request, res: Response) => {
-  res.json({ hola: 'hola' })
+  res.json({ hola: 'pong' })
 })
 
 app.use('/api/score', scoreRouter)
@@ -24,3 +24,5 @@ app.use((_req: Request, res: Response) => {
 app.listen(process.env.PORT ?? 3000, () => {
   console.log('Server is listening ')
 })
+
+export default app
