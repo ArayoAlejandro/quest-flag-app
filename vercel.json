@@ -1,12 +1,8 @@
 {
-    "routes": [
-      {
-        "src": "/api/.*",
-        "dest": "api/dist/index.js"
-      },
-      {
-        "src": "/",
-        "dest": "public"
-      }
-    ]
-  }
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/dist"
+    }
+  ]
+}
