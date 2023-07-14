@@ -65,10 +65,10 @@
         },
         {
             "parserOptions": {
-                "project": "./backend/tsconfig.json"
+                "project": "./api/tsconfig.json"
             },
             "files": [
-                "backend/**/*.+(ts)"
+                "api/**/*.+(ts)"
             ],
             "env": {
                 "node": true

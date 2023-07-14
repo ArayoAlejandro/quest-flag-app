@@ -4,13 +4,13 @@
   "description": "",
   "main": "index.js",
   "workspaces": [
-    "backend",
+    "api",
     "frontend"
   ],
   "scripts": {
-    "build": "pnpm --filter \"backend\" build  && pnpm --filter \"frontend\" build",
+    "build": "pnpm --filter \"api\" build  && pnpm --filter \"frontend\" build",
     "dev:front": "pnpm --filter \"frontend\" dev",
-    "dev:backend": "pnpm --filter \"backend\" dev"
+    "dev:api": "pnpm --filter \"api\" dev"
   },
   "keywords": [],
   "author": "",

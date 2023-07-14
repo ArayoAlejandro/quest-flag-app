@@ -23,15 +23,12 @@
     
   },
   "files": [],
-  "include": [
-    "./api/*.ts"
-  ],
   "references": [
     {
       "path": "frontend"
     },
     {
-      "path": "backend"
+      "path": "api"
     }
   ]
 }
