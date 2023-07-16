@@ -3,10 +3,12 @@ import { useMenuScore } from '../../hooks/useMenuScore'
 import { Region } from '../../services/score'
 import { type RegionType } from '../../types/RegionsType'
 import { Loading } from '../Loading'
+import { useFlags } from '../../hooks/useFlags'
 
 export const ScorePage = (): JSX.Element => {
   const { loading, changeScoreMenu, scoreList } = useMenuScore()
-  const [activateMenu, setActivateMenu] = useState(0)
+  const { regionGame } = useFlags()
+  const [activateMenu, setActivateMenu] = useState(Object.keys(Region).indexOf(regionGame))
   const emote = ['🥇', '🥈', '🥉']
 
   const handleClick = ({ key, regionParse }: { key: number, regionParse: RegionType }) => {
@@ -21,10 +23,9 @@ export const ScorePage = (): JSX.Element => {
           Object.keys(Region).map((region, key) => {
             const regionParse = region as RegionType
             return (
-
               <li className={`score__game__menu__item ${activateMenu === key ? 'score__game__menu__item-activate' : ''}`} key={key}>
                 <a onClick={() => { handleClick({ key, regionParse }) }}>
-                  {region.toUpperCase()}
+                  {regionParse.toUpperCase()}
                 </a>
               </li>
             )
