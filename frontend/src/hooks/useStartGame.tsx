@@ -7,12 +7,13 @@ import { useGameState } from './useGameState'
 import { useScore } from './useScore'
 
 export const useStartGame = () => {
-  const { activateScore } = useScore()
+  const { activateScore, resetScore } = useScore()
   const { setCountries, setRegionGame } = useFlags()
   const { changeStateGame } = useGameState()
 
   const handleStart = ({ region = Region.all }: { region: RegionType }): void => {
     let apiFetch
+    resetScore()
     setRegionGame(region)
 
     if (region === Region.all) {

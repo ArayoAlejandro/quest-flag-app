@@ -4,6 +4,7 @@ export interface ScoreContextType {
   activateScore: () => void
   deactivateScore: () => void
   addScorePoints: (scorePoints?: number) => void
+  resetScore: () => void
   score: number
 }
 
@@ -14,6 +15,7 @@ interface Props {
   initScore?: number
   correctAnswerScoreDefault?: number
   lessScoreSecond?: number
+  resetScore: () => void
 }
 
 export const ScoreProvider = ({
@@ -52,9 +54,14 @@ export const ScoreProvider = ({
     setActiveScore(true)
   }
 
+  const resetScore = () => {
+    setScore(initScore)
+  }
+
   return (
     <ScoreContext.Provider value={
       {
+        resetScore,
         addScorePoints,
         deactivateScore,
         activateScore,

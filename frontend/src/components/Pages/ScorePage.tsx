@@ -1,4 +1,3 @@
-
 import { useState } from 'react'
 import { useMenuScore } from '../../hooks/useMenuScore'
 import { Region } from '../../services/score'
