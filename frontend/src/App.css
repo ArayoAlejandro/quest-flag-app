@@ -314,16 +314,34 @@ footer {
 }
 
 .score__game__menu__item {
-  background-color: var(--headline);
+  background-color:var(--secondary);
+  border: 3px solid var(--headline);
   padding: 12px;
   border-radius: 12px;
   cursor: pointer;
 }
 
+.score__game__menu__item:hover {
+  background-color: var(--tertiary);
+}
+
 .score__game__menu__item a {
   font-weight: 700;
-  color: var(--tertiary);
+  color: var(--headline);
 }
+
+.score__game__menu__item-activate {
+  background-color: var(--headline);
+}
+
+.score__game__menu__item-activate:hover {
+  background-color: var(--headline);
+}
+
+.score__game__menu__item-activate a {
+  color: var(--background);
+}
+
 
 .score__game__list {
   border-radius: 8px;
@@ -335,6 +353,7 @@ footer {
 }
 
 .score__game__item {
+  gap: 20px;
   padding: 0px 8px;
   font-weight: 700;
   display: flex;
