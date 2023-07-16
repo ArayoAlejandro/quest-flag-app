@@ -4,6 +4,7 @@ import { useGameState } from './hooks/useGameState'
 import { ScoreProvider } from './context/Score'
 
 import { FlagsQuestProvider } from './context/FlagsQuest'
+import { Footer } from './components/Footer'
 
 function App (): JSX.Element {
   const { actualPage } = useGameState()
@@ -11,12 +12,15 @@ function App (): JSX.Element {
   return (
     <FlagsQuestProvider>
       <ScoreProvider >
-        <>
-          <Header />
-          <main>
-            {actualPage}
-          </main>
-        </>
+        <div className='wrapper__main'>
+          <div>
+            <Header />
+            <main>
+              {actualPage}
+            </main>
+          </div>
+          <Footer />
+        </div>
       </ScoreProvider >
     </FlagsQuestProvider>
   )

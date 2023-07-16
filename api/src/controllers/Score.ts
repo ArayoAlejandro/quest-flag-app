@@ -1,9 +1,16 @@
 import { Router, type Request, type Response } from 'express'
 import { ScoreAll, ScoreEurope, ScoreAfrica, ScoreOceania, ScoreAmerica, ScoreAsia } from '../models/Score'
 
+const filterSorted = {
+  limit: 10,
+  sort: {
+    score: -1
+  }
+}
+
 const router = Router()
 router.get('/all', async (_req: Request, res: Response) => {
-  await ScoreAll.find()
+  await ScoreAll.find({}, [], filterSorted)
     .then(score => res.json(score))
     .catch(error => { console.error(error) })
 })
@@ -23,7 +30,7 @@ router.post('/all', async (req: Request, res: Response) => {
 })
 
 router.get('/europe', async (_req: Request, res: Response) => {
-  await ScoreEurope.find()
+  await ScoreEurope.find({}, [], filterSorted)
     .then(score => res.json(score))
     .catch(error => { console.error(error) })
 })
@@ -43,7 +50,7 @@ router.post('/europe', async (req: Request, res: Response) => {
 })
 
 router.get('/africa', async (_req: Request, res: Response) => {
-  await ScoreAfrica.find()
+  await ScoreAfrica.find({}, [], filterSorted)
     .then(score => res.json(score))
     .catch(error => { console.error(error) })
 })
@@ -63,7 +70,7 @@ router.post('/africa', async (req: Request, res: Response) => {
 })
 
 router.get('/oceania', async (_req: Request, res: Response) => {
-  await ScoreOceania.find()
+  await ScoreOceania.find({}, [], filterSorted)
     .then(score => res.json(score))
     .catch(error => { console.error(error) })
 })
@@ -83,7 +90,7 @@ router.post('/oceania', async (req: Request, res: Response) => {
 })
 
 router.get('/america', async (_req: Request, res: Response) => {
-  await ScoreAmerica.find()
+  await ScoreAmerica.find({}, [], filterSorted)
     .then(score => res.json(score))
     .catch(error => { console.error(error) })
 })
@@ -103,7 +110,7 @@ router.post('/america', async (req: Request, res: Response) => {
 })
 
 router.get('/asia', async (_req: Request, res: Response) => {
-  await ScoreAsia.find()
+  await ScoreAsia.find({}, [], filterSorted)
     .then(score => res.json(score))
     .catch(error => { console.error(error) })
 })

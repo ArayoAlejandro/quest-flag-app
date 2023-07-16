@@ -1,39 +1,52 @@
 
-import { useGameState } from '../../hooks/useGameState'
 import { useMenuScore } from '../../hooks/useMenuScore'
 import { Region } from '../../services/score'
 import { type RegionType } from '../../types/RegionsType'
 
 export const ScorePage = (): JSX.Element => {
   const { changeScoreMenu, scoreList } = useMenuScore()
-  const { resetGame } = useGameState()
+
+  const emote = ['🥇', '🥈', '🥉']
   return (
-    <>
-      <h2>Score</h2>
-      <ul>
+    <section className='score__game'>
+      <ul className='score__game__menu__list'>
         {
           Object.keys(Region).map((region, key) => {
             const regionParse = region as RegionType
             return (
-              <li key={key}>
+              <li className='score__game__menu__item' key={key}>
                 <a onClick={() => { changeScoreMenu(regionParse) }}>
-                  {region}
+                  {region.toUpperCase()}
                 </a>
               </li>
             )
           })
         }
       </ul>
-      <ul>
+      <ul className='score__game__list'>
+        <li className='score__game__list__header' >
+          <p>
+            Clasificación
+          </p>
+        </li>
         {
-          scoreList.map((score, key) =>
-            <li key={key}>
-              {score.score} {score.name}
+          scoreList.map((score, index) =>
+            <li className='score__game__item' key={score.id}>
+              <p>
+                {
+                  index > 2
+                    ? `${index + 1}. `
+                    : emote[index]
+                }
+                {score.name}
+              </p>
+              <p>
+                {score.score} pts
+              </p>
             </li>
           )
         }
       </ul>
-      <button onClick={resetGame}>Volver a jugar</button>
-    </>
+    </section>
   )
 }

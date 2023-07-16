@@ -25,12 +25,15 @@ export interface GameState {
   actualPage: JSX.Element
   changeStateGame: (gameState: typeof GAME_STATES[keyof typeof GAME_STATES]) => void
   resetGame: () => void
+  isPlaying: boolean
+  setIsPlaying: (state: boolean) => void
 }
 
 export const GameStateContext = createContext<GameState | null>(null)
 
 export const GameStateProvider = ({ children }: { children: JSX.Element }): JSX.Element => {
   const [stateGame, setStateGame] = useState(GAME_STATES.GAME_START)
+  const [isPlaying, setIsPlaying] = useState(false)
   const actualPage = GAME_PAGE[stateGame]
 
   const resetGame = () => {
@@ -42,7 +45,15 @@ export const GameStateProvider = ({ children }: { children: JSX.Element }): JSX.
   }
 
   return (
-    <GameStateContext.Provider value={{ changeStateGame, actualPage, resetGame }}>
+    <GameStateContext.Provider value={
+      {
+        changeStateGame,
+        actualPage,
+        resetGame,
+        isPlaying,
+        setIsPlaying
+      }
+      }>
       {children}
     </GameStateContext.Provider>
   )

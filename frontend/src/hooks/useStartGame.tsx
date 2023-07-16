@@ -11,7 +11,7 @@ export const useStartGame = () => {
   const { setCountries, setRegionGame } = useFlags()
   const { changeStateGame } = useGameState()
 
-  const handleStart = ({ region }: { region: RegionType }): void => {
+  const handleStart = ({ region = Region.all }: { region: RegionType }): void => {
     let apiFetch
     setRegionGame(region)
 

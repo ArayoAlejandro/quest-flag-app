@@ -35,12 +35,10 @@ export const ScoreProvider = ({
     return () => { clearTimeout(timer) }
   }
 
-  const timerCallback = useCallback(timerFunction, [score, lessScoreSecond])
-
   useEffect(() => {
-    const clearTimer = timerCallback({ isActive: activeScore })
+    const clearTimer = timerFunction({ isActive: activeScore })
     return () => { clearTimer() }
-  }, [score, activeScore, timerCallback])
+  }, [timerFunction])
 
   const addScorePoints = (scorePoints: number = correctAnswerScoreDefault): void => {
     setScore(prev => prev + scorePoints)

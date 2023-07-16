@@ -1,5 +1,4 @@
 import ReactDOM from 'react-dom/client'
-import './index.css'
 import { GameStateProvider } from './context/GameState'
 import App from './App'
 

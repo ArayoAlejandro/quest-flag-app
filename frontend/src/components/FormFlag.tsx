@@ -32,11 +32,10 @@ export const FormFlag = (): JSX.Element => {
           type="text"
           name='flag'
           value={input}
+          placeholder='Bandera'
           onChange={e => { setInput(e.target.value) }}
         />
-        <div className='game__form__buttons'>
-          <button disabled={!nameFlags.includes(input)}>Send</button>
-        </div>
+        <button className='game__form__buttons' disabled={!nameFlags.includes(input)}>Enviar</button>
       </form>
       <FlagsList filterFlags={nameFlags.filter(flag => flag.includes(input))} setInput={setInput} ></FlagsList>
     </>
