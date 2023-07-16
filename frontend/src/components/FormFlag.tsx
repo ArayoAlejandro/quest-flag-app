@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/require-array-sort-compare */
 import { useState } from 'react'
 import { FlagsList } from './FlagsList'
 import { useFlags } from '../hooks/useFlags'

@@ -7,10 +7,15 @@ import { getScores } from '../services/score'
 export const useMenuScore = () => {
   const { regionGame } = useFlags()
   const [scoreList, setScoreList] = useState<Score[]>([])
+  const [loading, setLoading] = useState(false)
 
   const setScoreRegion = (region: RegionType) => {
+    setLoading(false)
     getScores(region)
-      .then(data => { setScoreList(data) })
+      .then(data => {
+        setScoreList(data)
+        setLoading(true)
+      })
   }
 
   useEffect(() => {
@@ -22,7 +27,8 @@ export const useMenuScore = () => {
   }
 
   return {
+    loading,
     changeScoreMenu,
-    scoreList: scoreList.sort((a, b) => b.score - a.score)
+    scoreList
   }
 }

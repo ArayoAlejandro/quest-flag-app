@@ -2,9 +2,10 @@ import { useState } from 'react'
 import { useMenuScore } from '../../hooks/useMenuScore'
 import { Region } from '../../services/score'
 import { type RegionType } from '../../types/RegionsType'
+import { Loading } from '../Loading'
 
 export const ScorePage = (): JSX.Element => {
-  const { changeScoreMenu, scoreList } = useMenuScore()
+  const { loading, changeScoreMenu, scoreList } = useMenuScore()
   const [activateMenu, setActivateMenu] = useState(0)
   const emote = ['🥇', '🥈', '🥉']
 
@@ -31,36 +32,40 @@ export const ScorePage = (): JSX.Element => {
         }
       </ul>
       {
-        scoreList.length === 0
-          ? <div>
-            <p>
-              No se han encontrado puntuaciones para este juego
-            </p>
-          </div>
-          : <ul className='score__game__list'>
-            <li className='score__game__list__header' >
-              <p>
-                Clasificación
-              </p>
-            </li>
-            {
-              scoreList.map((score, index) =>
-                <li className='score__game__item' key={score.id}>
+        loading
+          ? (
+              scoreList.length === 0
+                ? <div>
+                <p>
+                  No se han encontrado puntuaciones para este juego
+                </p>
+              </div>
+                : <ul className='score__game__list'>
+                <li className='score__game__list__header' >
                   <p>
-                    {
-                      index > 2
-                        ? `${index + 1}. `
-                        : emote[index]
-                    }
-                    {score.name}
-                  </p>
-                  <p>
-                    {score.score} pts
+                    Clasificación
                   </p>
                 </li>
-              )
-            }
-          </ul>
+                {
+                  scoreList.map((score, index) =>
+                    <li className='score__game__item' key={score.id}>
+                      <p>
+                        {
+                          index > 2
+                            ? `${index + 1}. `
+                            : emote[index]
+                        }
+                        {score.name}
+                      </p>
+                      <p>
+                        {score.score} pts
+                      </p>
+                    </li>
+                  )
+                }
+              </ul>
+            )
+          : <Loading/>
       }
     </section>
   )

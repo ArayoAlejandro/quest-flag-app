@@ -55,6 +55,25 @@ footer {
   justify-content: center;
 }
 
+.loading {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 6px solid var(--buttontext);
+  border-color: var(--buttontext) var(--buttontext) var(--buttontext) transparent;
+  animation: animation 1.2s linear infinite;
+}
+
+@keyframes animation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .wrapper__main {
   height: 100vh;
   display: flex;
