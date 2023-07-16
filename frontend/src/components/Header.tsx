@@ -6,9 +6,9 @@ export const Header: FC = () => {
   const { changeGameStateReset } = useChangeState()
   return (
     <nav className='header'>
-      <ul>
-        <li>
-          <h1><a onClick={() => { changeGameStateReset(GAME_STATES.GAME_START) }}>Flags Quiz 🚩</a></h1>
+      <ul className='header__list'>
+        <li className='header__item'>
+          <h1><a onClick={() => { changeGameStateReset(GAME_STATES.GAME_START) }}>Flags Quiz <span className='header__logo__emote'>🚩</span></a></h1>
         </li>
         <li>
           <a onClick={() => { changeGameStateReset(GAME_STATES.GAME_SCORE) }}>Clasificación</a>
