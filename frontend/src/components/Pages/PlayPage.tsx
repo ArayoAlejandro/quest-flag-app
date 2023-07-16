@@ -1,10 +1,10 @@
 import { GAME_STATES } from '../../context/GameState'
-import { useGameState } from '../../hooks/useGameState'
+import { useChangeState } from '../../hooks/useChangeState'
 import { useStartGame } from '../../hooks/useStartGame'
 import { Region } from '../../services/score'
 
 export const PlayPage = (): JSX.Element => {
-  const { changeStateGame } = useGameState()
+  const { changeGameStateReset } = useChangeState()
   const { handleStart } = useStartGame()
   return (
     <section className='select__game'>
@@ -18,7 +18,7 @@ export const PlayPage = (): JSX.Element => {
             <p className='select__game__button__description'>Paises del todo mundo</p>
           </div>
         </button>
-        <button className='select__game__button' onClick={() => { changeStateGame(GAME_STATES.GAME_SELECT_REGION) }}>
+        <button className='select__game__button' onClick={() => { changeGameStateReset(GAME_STATES.GAME_SELECT_REGION) }}>
           <span className='select__game__button__emoji'>🗼</span>
           <div>
             <span className='select__game__button__title'>Regiones</span>

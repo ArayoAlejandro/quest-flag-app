@@ -15,7 +15,6 @@ interface Props {
   initScore?: number
   correctAnswerScoreDefault?: number
   lessScoreSecond?: number
-  resetScore: () => void
 }
 
 export const ScoreProvider = ({
