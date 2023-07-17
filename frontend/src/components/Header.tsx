@@ -10,7 +10,7 @@ export const Header: FC = () => {
         <li className='header__item'>
           <h1><a onClick={() => { changeGameStateReset(GAME_STATES.GAME_START) }}>Flags Quiz <span className='header__logo__emote'>🚩</span></a></h1>
         </li>
-        <li>
+        <li className='header__item'>
           <a onClick={() => { changeGameStateReset(GAME_STATES.GAME_SCORE) }}>Clasificación</a>
         </li>
       </ul>

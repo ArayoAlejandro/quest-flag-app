@@ -23,8 +23,11 @@ export const ScorePage = (): JSX.Element => {
           Object.keys(Region).map((region, key) => {
             const regionParse = region as RegionType
             return (
-              <li className={`score__game__menu__item ${activateMenu === key ? 'score__game__menu__item-activate' : ''}`} key={key}>
-                <a onClick={() => { handleClick({ key, regionParse }) }}>
+              <li
+                className={`score__game__menu__item ${activateMenu === key ? 'score__game__menu__item-activate' : ''}`}
+                key={key}
+                onClick={() => { handleClick({ key, regionParse }) }}>
+                <a >
                   {regionParse.toUpperCase()}
                 </a>
               </li>
@@ -66,7 +69,7 @@ export const ScorePage = (): JSX.Element => {
                 }
               </ul>
             )
-          : <Loading/>
+          : <Loading />
       }
     </section>
   )
