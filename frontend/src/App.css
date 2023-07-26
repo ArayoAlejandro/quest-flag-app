@@ -74,6 +74,18 @@ footer {
   }
 }
 
+.score {
+  margin-bottom: 0.83em;
+  display: flex;
+  gap: 10px;
+  font-size: 35px;
+}
+
+.score p {
+  margin: 0;
+  padding: 0;
+}
+
 .wrapper__main {
   height: 100vh;
   display: flex;
@@ -230,6 +242,23 @@ footer {
   gap: 20px;
   align-items: center;
   padding: 10px;
+}
+
+.game__score {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.score__plus {
+  position: absolute;
+  background-color: #ffffff85;
+  padding: 8px 12px;
+  border-radius: 12px;
+  backdrop-filter: blur(2px);
+  text-wrap: nowrap;
 }
 
 .game__options {

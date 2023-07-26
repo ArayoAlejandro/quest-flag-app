@@ -1,17 +1,22 @@
 import { useFlags } from '../../hooks/useFlags'
-import { useScore } from '../../hooks/useScore'
 import { FormFlag } from '../FormFlag'
+import { Score } from '../Score'
 
 export const GamePage = (): JSX.Element => {
   const { actualCountryQuest, loading } = useFlags()
-  const { score } = useScore()
 
   return loading
     ? <h2>Loading</h2>
     : <section className='game'>
-        <h2>¿A que país pertenece esta bandera?</h2>
-        <span>{score}</span>
-        <img className="game__image" src={actualCountryQuest.flags.png} alt="A flag" />
-        <FormFlag />
-      </section>
+      <h2>¿A que país pertenece esta bandera?</h2>
+      <Score>
+        <>
+          <img className="game__image" src={actualCountryQuest.flags.png} alt="A flag" />
+          {
+           actualCountryQuest.translations.spa.common
+          }
+          <FormFlag />
+        </>
+      </Score>
+    </section>
 }
