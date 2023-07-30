@@ -5,23 +5,21 @@ import { Footer } from './components/Footer'
 import { ScoreProvider } from './context/Score'
 import { FlagsQuestProvider } from './context/FlagsQuest'
 
-import { useGameState } from './hooks/useGameState'
+import { Outlet } from 'react-router-dom'
 
 function App (): JSX.Element {
-  const { actualPage } = useGameState()
-
   return (
     <FlagsQuestProvider>
       <ScoreProvider>
-        <div className='wrapper__main'>
-          <div>
-            <Header />
-            <main>
-              {actualPage}
-            </main>
+          <div className='wrapper__main'>
+            <div>
+              <Header />
+              <main>
+                <Outlet/>
+              </main>
+            </div>
+            <Footer />
           </div>
-          <Footer />
-        </div>
       </ScoreProvider>
     </FlagsQuestProvider>
   )

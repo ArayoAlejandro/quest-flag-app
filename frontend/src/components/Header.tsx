@@ -2,6 +2,7 @@ import { type FC } from 'react'
 import { GAME_STATES } from '../context/GameState'
 import { useChangeState } from '../hooks/useChangeState'
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
 export const Header: FC = () => {
   const { changeGameStateReset } = useChangeState()
@@ -29,13 +30,13 @@ export const Header: FC = () => {
       <ul className='header__list'>
         <li className='header__item'>
           <motion.h1 whileHover='hover' whileTap='rest' >
-            <a onClick={() => { changeGameStateReset(GAME_STATES.GAME_START) }}>Flags Quiz
+            <Link to="/" onClick={() => { changeGameStateReset(GAME_STATES.GAME_CURRENT) }}>Flags Quiz
               <motion.span variants={variants} className='header__logo__emote'>🚩</motion.span>
-            </a>
+            </Link>
           </motion.h1>
         </li>
         <li className='header__item'>
-          <a onClick={() => { changeGameStateReset(GAME_STATES.GAME_SCORE) }}>Clasificación</a>
+          <Link to="/scoreboard">Clasificación</Link>
         </li>
       </ul>
 

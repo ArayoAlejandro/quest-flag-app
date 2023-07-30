@@ -37,12 +37,6 @@ body {
   max-width: 800px;
 }
 
-button {
-  background-color: var(--button);
-  border: 3px solid #272343;
-  border-radius: 6px;
-}
-
 nav {
   display: flex;
   flex-direction: column;
@@ -53,6 +47,10 @@ footer {
   margin-bottom: 20px;
   display: flex;
   justify-content: center;
+}
+
+a {
+  text-decoration: none;
 }
 
 .loading {
@@ -135,7 +133,16 @@ footer {
   align-items: center;
   text-align: start;
   width: 100%;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
+  background-color: var(--button);
+  border: 3px solid #272343;
+  border-radius: 6px;
+}
+
+.game__options__regions__button {
+  background-color: var(--button);
+  border: 3px solid #272343;
+  border-radius: 6px; 
 }
 
 .game__options__regions__button:hover,
@@ -344,9 +351,18 @@ footer {
 }
 
 .game__end__link__button {
+  background-color: var(--secondary);
+  border: 3px solid var(--headline);
+  border-radius: 12px;
   padding: 12px 14px;
   font-size: 0.9rem;
   font-weight: 700;
+  transition: 0.3s all ease; 
+}
+
+.game__end__link__button:hover {
+  scale: 1.1;
+  background-color: var(--tertiary);
 }
 
 .game__end__footer {

@@ -1,24 +1,17 @@
 import { useEffect } from 'react'
-import { GAME_STATES } from '../../context/GameState'
 import { useFlags } from '../../hooks/useFlags'
-import { useGameState } from '../../hooks/useGameState'
 import { useScore } from '../../hooks/useScore'
 import { useFormScore } from '../../hooks/useFormScore'
+import { Link } from 'react-router-dom'
 
 export const EndPage = (): JSX.Element => {
   const { submitForm, score } = useFormScore()
   const { answers, resetAnswers } = useFlags()
-  const { changeStateGame } = useGameState()
   const { deactivateScore } = useScore()
 
   useEffect(() => {
     deactivateScore()
   }, [])
-
-  const handleClick = (gameState: string): void => {
-    resetAnswers()
-    changeStateGame(gameState)
-  }
 
   return (
     <section className='game__end'>
@@ -56,8 +49,8 @@ export const EndPage = (): JSX.Element => {
           <button className='game__end__form__button'>Enviar</button>
         </form>
         <div className='game__end__link'>
-          <button className='game__end__link__button' onClick={() => { handleClick(GAME_STATES.GAME_SCORE) }}>Puntuacion mundial</button>
-          <button className='game__end__link__button' onClick={() => { handleClick(GAME_STATES.GAME_START) }}>Volver a jugar</button>
+          <Link to="/scoreboard" className='game__end__link__button' onClick={() => { resetAnswers() }}>Puntuacion mundial</Link>
+          <Link to="/" className='game__end__link__button' onClick={() => { resetAnswers() }}>Volver a jugar</Link>
         </div>
       </div>
     </section>
