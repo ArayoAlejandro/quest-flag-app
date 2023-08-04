@@ -3,18 +3,31 @@ import { useFlags } from '../../hooks/useFlags'
 import { useScore } from '../../hooks/useScore'
 import { useFormScore } from '../../hooks/useFormScore'
 import { Link } from 'react-router-dom'
+import { useGameState } from '../../hooks/useGameState'
+import { GAME_STATES } from '../../context/GameState'
+import { motion } from 'framer-motion'
+import confetti from 'canvas-confetti'
 
 export const EndPage = (): JSX.Element => {
   const { submitForm, score } = useFormScore()
-  const { answers, resetAnswers } = useFlags()
+  const { answers } = useFlags()
   const { deactivateScore } = useScore()
+  const { changeStateGame } = useGameState()
 
   useEffect(() => {
     deactivateScore()
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 }
+    })
+
+    return () => { changeStateGame(GAME_STATES.GAME_DEFAULT) }
   }, [])
 
   return (
     <section className='game__end'>
+
       <table className='game__end__table'>
         <tr className='game__end__row'>
           <th>Pregunta</th>
@@ -43,14 +56,18 @@ export const EndPage = (): JSX.Element => {
         }
       </table>
       <div className='game__end__footer'>
-        <span className='game__end__score'>{`Score ${score}`}</span>
+        <motion.span className='game__end__score'
+          initial={{}}
+        >
+          {`Score ${score}`}
+        </motion.span>
         <form className='game__end__form' onSubmit={submitForm}>
           <input className='game__end__form__input' type="text" name="name" placeholder='Nombre' required />
           <button className='game__end__form__button'>Enviar</button>
         </form>
         <div className='game__end__link'>
-          <Link to="/scoreboard" className='game__end__link__button' onClick={() => { resetAnswers() }}>Puntuacion mundial</Link>
-          <Link to="/" className='game__end__link__button' onClick={() => { resetAnswers() }}>Volver a jugar</Link>
+          <Link to="/scoreboard" className='game__end__link__button'>Puntuación mundial</Link>
+          <Link to="/" className='game__end__link__button'>Volver a jugar</Link>
         </div>
       </div>
     </section>

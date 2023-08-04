@@ -85,7 +85,7 @@ a {
 }
 
 .wrapper__main {
-  height: 100vh;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -142,7 +142,7 @@ a {
 .game__options__regions__button {
   background-color: var(--button);
   border: 3px solid #272343;
-  border-radius: 6px; 
+  border-radius: 6px;
 }
 
 .game__options__regions__button:hover,
@@ -173,9 +173,11 @@ a {
 }
 
 .game__image {
+  width: 40%;
+  height: 200px;
+  object-fit: cover;
   border-radius: 4px;
   border: 2px solid #000000;
-  width: 40%;
 }
 
 .game__form,
@@ -237,6 +239,7 @@ a {
 .score__plus {
   position: absolute;
   background-color: #ffffff85;
+  z-index: 200;
   padding: 8px 12px;
   border-radius: 12px;
   backdrop-filter: blur(2px);
@@ -357,7 +360,7 @@ a {
   padding: 12px 14px;
   font-size: 0.9rem;
   font-weight: 700;
-  transition: 0.3s all ease; 
+  transition: 0.3s all ease;
 }
 
 .game__end__link__button:hover {
@@ -390,6 +393,8 @@ a {
   list-style: none;
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .score__game__menu__item {
@@ -474,4 +479,92 @@ a {
 
 .score__game__item:nth-of-type(4) {
   background-color: burlywood;
+}
+
+.modal__game__exit__button {
+  margin-top: 40px;
+  display: flex;
+  gap: 10px;
+}
+
+.modal__game__exit__button__abort,
+.modal__game__exit__button__cancel {
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 8px;
+  border-radius: 4px;
+  background-color: var(--headline);
+  border: 3px solid var(--headline);
+  color: white;
+}
+
+.modal__game__exit__button__cancel {
+  background-color: var(--secondary);
+  border: 3px solid var(--buttontext);
+  color: var(--paragraph);
+  transition: all 0.3s;
+}
+
+.modal__game__exit__button__cancel:hover {
+  background-color: var(--tertiary);
+}
+
+.modal__game {
+  width: 35%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -90%);
+  border: 3px solid var(--buttontext);
+  border-radius: 6px;
+  background-color: var(--background);
+  z-index: 2000;
+  padding: 10px 20px;
+}
+
+.game__loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.game__loading__countdown {
+  font-weight: 600;
+  font-size: 6rem;
+}
+
+.game__flags {
+  z-index: 100;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (max-width: 767.98px) {
+  .select__game__options {
+    width: 100%;
+  }
+
+  .wrapper__main {
+    padding: 10px 20px;
+  }
+
+  .game__image,
+  .game__form,
+  .game__end__form,
+  .flaglist,
+  .game__end__link {
+    width: 100%;
+  }
+
+  .game__end__row th {
+    font-size: 12px;
+  }
+
+  .modal__game {
+    width: 75%;
+  }
 }

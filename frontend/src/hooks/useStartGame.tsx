@@ -1,32 +1,32 @@
+import { useState } from 'react'
 import { GAME_STATES } from '../context/GameState'
 import { getAllCountry, getRegionCountry } from '../services/country'
-import { type RegionType } from '../types/RegionsType'
+
 import { Region } from '../services/score'
 import { useFlags } from './useFlags'
 import { useGameState } from './useGameState'
-import { useScore } from './useScore'
-
 export const useStartGame = () => {
-  const { resetScore } = useScore()
-  const { setCountries, setRegionGame } = useFlags()
+  const [loading, setLoading] = useState(false)
+  const { setCountries, regionGame, resetFlags } = useFlags()
   const { changeStateGame } = useGameState()
 
-  const handleStart = ({ region = Region.all }: { region: RegionType }): void => {
+  const handleStart = (): void => {
     let apiFetch
-    resetScore()
-    setRegionGame(region)
 
-    if (region === Region.all) {
-      apiFetch = getAllCountry()
+    if (regionGame !== Region.all) {
+      apiFetch = getRegionCountry(regionGame)
     } else {
-      apiFetch = getRegionCountry(region)
+      apiFetch = getAllCountry()
     }
 
+    changeStateGame(GAME_STATES.GAME_DEFAULT)
+    setLoading(true)
     void apiFetch.then(res => {
+      resetFlags()
       setCountries(res)
-      changeStateGame(GAME_STATES.GAME_CURRENT)
+      setLoading(false)
     })
   }
 
-  return { handleStart }
+  return { handleStart, loading }
 }

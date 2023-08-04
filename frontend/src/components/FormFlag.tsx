@@ -36,7 +36,7 @@ export const FormFlag = (): JSX.Element => {
         />
         <button className='game__form__buttons' disabled={!nameFlags.includes(input)}>Enviar</button>
       </form>
-      <FlagsList filterFlags={nameFlags.filter(flag => flag.includes(input))} setInput={setInput} ></FlagsList>
+      <FlagsList filterFlags={nameFlags.filter(flag => flag.toLocaleLowerCase().includes(input.toLocaleLowerCase()))} setInput={setInput} ></FlagsList>
     </>
   )
 }

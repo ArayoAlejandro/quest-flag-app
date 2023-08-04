@@ -6,12 +6,11 @@ import { postScores } from '../services/score'
 import { useNavigate } from 'react-router-dom'
 
 export const useFormScore = () => {
-  const { resetAnswers, regionGame } = useFlags()
+  const { regionGame } = useFlags()
   const navigate = useNavigate()
   const { score } = useScore()
 
   const submitForm = (e: FormEvent): void => {
-    resetAnswers()
     e.preventDefault()
     const dataForm = new FormData(e.target as HTMLFormElement)
 

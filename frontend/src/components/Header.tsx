@@ -1,11 +1,22 @@
-import { type FC } from 'react'
-import { GAME_STATES } from '../context/GameState'
-import { useChangeState } from '../hooks/useChangeState'
+import { useState, type FC, useEffect } from 'react'
+
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { Modal } from './Modal'
+import { useGameState } from '../hooks/useGameState'
+import { GAME_STATES } from '../context/GameState'
+import { useScore } from '../hooks/useScore'
 
 export const Header: FC = () => {
-  const { changeGameStateReset } = useChangeState()
+  const { stateGame, changeStateGame } = useGameState()
+  const { deactivateScore, activateScore } = useScore()
+  const [isOpen, setIsOpen] = useState(false)
+
+  useEffect(() => {
+    isOpen
+      ? deactivateScore()
+      : activateScore()
+  }, [isOpen])
 
   const variants = {
     hover: {
@@ -25,21 +36,39 @@ export const Header: FC = () => {
     }
   }
 
-  return (
-    <nav className='header'>
-      <ul className='header__list'>
-        <li className='header__item'>
-          <motion.h1 whileHover='hover' whileTap='rest' >
-            <Link to="/" onClick={() => { changeGameStateReset(GAME_STATES.GAME_CURRENT) }}>Flags Quiz
-              <motion.span variants={variants} className='header__logo__emote'>🚩</motion.span>
-            </Link>
-          </motion.h1>
-        </li>
-        <li className='header__item'>
-          <Link to="/scoreboard">Clasificación</Link>
-        </li>
-      </ul>
+  const handleClick = (e: React.SyntheticEvent<EventTarget>) => {
+    if (stateGame === GAME_STATES.GAME_CURRENT) {
+      e.preventDefault()
+      setIsOpen(true)
+    }
+  }
 
-    </nav>
+  return (
+    <>
+      <nav className='header'>
+        <ul className='header__list'>
+          <li className='header__item'>
+            <motion.h1 whileHover='hover' whileTap='rest' >
+              <Link to="/" onClick={handleClick}>Flags Quiz
+                <motion.span variants={variants} className='header__logo__emote'>🚩</motion.span>
+              </Link>
+            </motion.h1>
+          </li>
+        </ul>
+      </nav>
+      {
+        isOpen &&
+        <Modal setIsOpen={setIsOpen}>
+          <>
+            <h2>Estas jugando ahora mismo <span>❗❗</span></h2>
+            <p>Deseas abandonar esta partida, no podrás recuperar tu puntuación.</p>
+            <div className='modal__game__exit__button'>
+              <Link to="/" className='modal__game__exit__button__abort' onClick={() => { changeStateGame(GAME_STATES.GAME_DEFAULT) }}>Abandonar</Link>
+              <button className='modal__game__exit__button__cancel'>Cancelar</button>
+            </div>
+          </>
+        </Modal>
+      }
+    </>
   )
 }
