@@ -76,7 +76,10 @@ export const FlagsQuestProvider = ({ children, maxQuest = 30 }: { children: JSX.
   }
 
   const infoActualQuestion = () => {
-    return { shuffledCountries: shuffledCountries.length, actualQuestIndex: actualQuestIndex + 1 }
+    return {
+      shuffledCountries: shuffledCountries.length,
+      actualQuestIndex: actualQuestIndex + 1
+    }
   }
 
   return (
