@@ -6,6 +6,7 @@ import { ScorePage } from './components/Pages/ScorePage'
 import { createBrowserRouter, RouterProvider, BrowserRouter, Outlet } from 'react-router-dom'
 import { GamePage } from './components/Pages/GamePage'
 import { RegionPage } from './components/Pages/RegionPage'
+import { HowPlay } from './components/Pages/HowPlay'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: '/regions',
         element: <RegionPage />
+      },
+      {
+        path: '/how-to-play',
+        element: <HowPlay />
       }
     ]
   }

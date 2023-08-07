@@ -26,7 +26,6 @@ export const FormFlag = (): JSX.Element => {
     <>
       <form onSubmit={e => { handleSubmit({ e, input }) }} className='game__form'>
         <input
-          autoFocus
           className="game__form__input"
           type="text"
           name='flag'

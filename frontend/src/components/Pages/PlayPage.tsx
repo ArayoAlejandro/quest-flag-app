@@ -9,6 +9,7 @@ export const PlayPage = (): JSX.Element => {
   useEffect(() => {
     setRegionGame(Region.all)
   }, [])
+
   return (
     <section className='select__game'>
       <h2>Adivina cual es la bandera del país correspondiente</h2>
@@ -28,13 +29,13 @@ export const PlayPage = (): JSX.Element => {
             <p className='select__game__button__description'>Países de una región elegida</p>
           </div>
         </Link>
-        <button className='select__game__button'>
+        <Link to="/how-to-play" className='select__game__button'>
           <span className='select__game__button__emoji'>❓</span>
           <div>
             <span className='select__game__button__title'>Como jugar</span>
             <p className='select__game__button__description'>Aprende a jugar</p>
           </div>
-        </button>
+        </Link>
         <Link to="/scoreboard" className='select__game__button'>
           <span className='select__game__button__emoji'>🏆</span>
           <div>
