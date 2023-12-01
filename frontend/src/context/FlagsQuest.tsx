@@ -24,7 +24,7 @@ export interface FlagsQuestContextType {
 
 export const FlagsQuestContext = createContext<FlagsQuestContextType | null>(null)
 
-export const FlagsQuestProvider = ({ children, maxQuest = 5 }: { children: JSX.Element, maxQuest?: number }): JSX.Element => {
+export const FlagsQuestProvider = ({ children, maxQuest = 30 }: { children: JSX.Element, maxQuest?: number }): JSX.Element => {
   const maxQuestions = maxQuest
   const [countries, setCountries] = useState<CountryType[]>([])
   const [answers, setAnswers] = useState<AnswerType[]>([])
