@@ -3,10 +3,12 @@ import { GameStateProvider } from './context/GameState'
 import App from './App'
 import { PlayPage } from './components/Pages/PlayPage'
 import { ScorePage } from './components/Pages/ScorePage'
-import { createBrowserRouter, RouterProvider, BrowserRouter, Outlet } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { GamePage } from './components/Pages/GamePage'
 import { RegionPage } from './components/Pages/RegionPage'
 import { HowPlay } from './components/Pages/HowPlay'
+import { FlagsQuestProvider } from './context/FlagsQuest'
+import { ScoreProvider } from './context/Score'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -37,7 +39,11 @@ const router = createBrowserRouter([
 ])
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-    <GameStateProvider>
+  <GameStateProvider>
+    <FlagsQuestProvider>
+      <ScoreProvider>
         <RouterProvider router={router} />
-    </GameStateProvider>
+      </ScoreProvider>
+    </FlagsQuestProvider>
+  </GameStateProvider>
 )

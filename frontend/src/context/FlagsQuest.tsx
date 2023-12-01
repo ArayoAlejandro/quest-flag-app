@@ -1,6 +1,5 @@
 import { createContext, useEffect, useState } from 'react'
 import { type AnswerType } from '../types/AnswersType'
-
 import { type CountryType } from '../types/CountryType'
 import { type RegionType } from '../types/RegionsType'
 import { Region } from '../services/score'
@@ -20,11 +19,12 @@ export interface FlagsQuestContextType {
     shuffledCountries: number
     actualQuestIndex: number
   }
+  resetAnswers: () => void
 }
 
 export const FlagsQuestContext = createContext<FlagsQuestContextType | null>(null)
 
-export const FlagsQuestProvider = ({ children, maxQuest = 30 }: { children: JSX.Element, maxQuest?: number }): JSX.Element => {
+export const FlagsQuestProvider = ({ children, maxQuest = 5 }: { children: JSX.Element, maxQuest?: number }): JSX.Element => {
   const maxQuestions = maxQuest
   const [countries, setCountries] = useState<CountryType[]>([])
   const [answers, setAnswers] = useState<AnswerType[]>([])
@@ -70,6 +70,10 @@ export const FlagsQuestProvider = ({ children, maxQuest = 30 }: { children: JSX.
     setActualQuestIndex(actualQuestIndex + 1)
   }
 
+  const resetAnswers = (): void => {
+    setAnswers([])
+  }
+
   const resetFlags = (): void => {
     setActualQuestIndex(0)
     suffledCountries()
@@ -94,7 +98,8 @@ export const FlagsQuestProvider = ({ children, maxQuest = 30 }: { children: JSX.
       isLastQuest,
       regionGame,
       setRegionGame,
-      infoActualQuestion
+      infoActualQuestion,
+      resetAnswers
     }}>
       {children}
     </FlagsQuestContext.Provider>

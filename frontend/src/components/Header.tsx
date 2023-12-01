@@ -60,7 +60,7 @@ export const Header: FC = () => {
         isOpen &&
         <Modal setIsOpen={setIsOpen}>
           <>
-            <h2>Estas jugando ahora mismo <span>❗❗</span></h2>
+            <h2>Estas jugando ahora mismo <span>❗</span></h2>
             <p>Deseas abandonar esta partida, no podrás recuperar tu puntuación.</p>
             <div className='modal__game__exit__button'>
               <Link to="/" className='modal__game__exit__button__abort' onClick={() => { changeStateGame(GAME_STATES.GAME_DEFAULT) }}>Abandonar</Link>

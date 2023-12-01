@@ -6,9 +6,13 @@ import { Score } from '../Score'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export const GameCurrentPage = (): JSX.Element => {
-  const { actualCountryQuest, loading, infoActualQuestion } = useFlags()
+  const { actualCountryQuest, loading, infoActualQuestion, resetAnswers } = useFlags()
   const { activateScore } = useScore()
   const { actualQuestIndex, shuffledCountries } = infoActualQuestion()
+
+  useEffect(() => {
+    resetAnswers()
+  }, [])
 
   useEffect(() => {
     if (!loading) activateScore()
@@ -19,7 +23,7 @@ export const GameCurrentPage = (): JSX.Element => {
     : <AnimatePresence>
       <section className='game'>
         <h2>¿A que país pertenece esta bandera?</h2>
-        {actualQuestIndex} / { shuffledCountries}
+        {actualQuestIndex} / {shuffledCountries}
         <Score>
           <motion.div
             className='game__flags'

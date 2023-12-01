@@ -1,5 +1,4 @@
 import { createContext, useState } from 'react'
-
 import { EndPage } from '../components/Pages/EndPage'
 import { GameCurrentPage } from '../components/Pages/GameCurrentPage'
 import { LoadingPage } from '../components/Pages/LoadingPage'
@@ -11,7 +10,7 @@ export const GAME_STATES = {
 }
 
 const GAME_PAGE: Record<string, JSX.Element> = {
-  GAME_DEFAULT: <LoadingPage/>,
+  GAME_DEFAULT: <LoadingPage />,
   GAME_CURRENT: <GameCurrentPage />,
   GAME_FINISH: <EndPage />
 }
