@@ -16,6 +16,7 @@ export const postScores = ({ scoreData, urlApiScore }: { scoreData: Score, urlAp
 export const getScores = (urlApiScore: RegionType) => {
   return fetch(`/api/score/${urlApiScore}`)
     .then(data => data.json())
+   
 }
 
 export const Region: Regions = {

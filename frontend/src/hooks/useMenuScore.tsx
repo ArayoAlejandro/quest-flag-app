@@ -8,6 +8,7 @@ export const useMenuScore = () => {
   const { regionGame } = useFlags()
   const [scoreList, setScoreList] = useState<Score[]>([])
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(false)
 
   const setScoreRegion = (region: RegionType) => {
     setLoading(false)
@@ -15,9 +16,12 @@ export const useMenuScore = () => {
       .then(data => {
         setScoreList(data)
         setLoading(true)
+        setError(false)
       })
+      .catch(() => setError(true))
   }
 
+    
   useEffect(() => {
     setScoreRegion(regionGame)
   }, [])
@@ -29,6 +33,7 @@ export const useMenuScore = () => {
   return {
     loading,
     changeScoreMenu,
-    scoreList
+    scoreList,
+    error
   }
 }

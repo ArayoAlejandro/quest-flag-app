@@ -6,7 +6,7 @@ import { Loading } from '../Loading'
 import { useFlags } from '../../hooks/useFlags'
 
 export const ScorePage = (): JSX.Element => {
-  const { loading, changeScoreMenu, scoreList } = useMenuScore()
+  const { loading, changeScoreMenu, scoreList, error } = useMenuScore()
   const { regionGame } = useFlags()
   const [activateMenu, setActivateMenu] = useState(Object.keys(Region).indexOf(regionGame))
   const emote = ['🥇', '🥈', '🥉']
@@ -36,40 +36,41 @@ export const ScorePage = (): JSX.Element => {
         }
       </ul>
       {
-        loading
-          ? (
+        error ? <p>Ha habido un error</p> :
+          loading
+            ? (
               scoreList.length === 0
                 ? <div>
-                <p>
-                  No se han encontrado puntuaciones para este juego
-                </p>
-              </div>
-                : <ul className='score__game__list'>
-                <li className='score__game__list__header' >
                   <p>
-                    Clasificación
+                    No se han encontrado puntuaciones para este juego
                   </p>
-                </li>
-                {
-                  scoreList.map((score, index) =>
-                    <li className='score__game__item' key={score.id}>
-                      <p>
-                        {
-                          index > 2
-                            ? `${index + 1}. `
-                            : emote[index]
-                        }
-                        {score.name}
-                      </p>
-                      <p>
-                        {score.score} pts
-                      </p>
-                    </li>
-                  )
-                }
-              </ul>
+                </div>
+                : <ul className='score__game__list'>
+                  <li className='score__game__list__header' >
+                    <p>
+                      Clasificación
+                    </p>
+                  </li>
+                  {
+                    scoreList.map((score, index) =>
+                      <li className='score__game__item' key={score.id}>
+                        <p>
+                          {
+                            index > 2
+                              ? `${index + 1}. `
+                              : emote[index]
+                          }
+                          {score.name}
+                        </p>
+                        <p>
+                          {score.score} pts
+                        </p>
+                      </li>
+                    )
+                  }
+                </ul>
             )
-          : <Loading />
+            : <Loading />
       }
     </section>
   )
