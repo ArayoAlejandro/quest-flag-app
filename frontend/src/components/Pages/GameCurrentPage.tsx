@@ -42,7 +42,7 @@ export const GameCurrentPage = (): JSX.Element => {
             transition={{ duration: 1.2 }}
             key={actualCountryQuest.translations.spa.common}
           >
-            <img className="game__image" src={actualCountryQuest.flags.png} alt="A flag" />
+            <img className="game__image" src={actualCountryQuest.flags.png} alt={actualCountryQuest.flags.alt} />
           </motion.div>
         </Score>
         <FormFlag />
