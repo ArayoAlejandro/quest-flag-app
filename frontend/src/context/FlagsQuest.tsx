@@ -20,6 +20,8 @@ export interface FlagsQuestContextType {
     actualQuestIndex: number
   }
   resetAnswers: () => void
+  error: Boolean,
+  setError: (boo: Boolean) => void
 }
 
 export const FlagsQuestContext = createContext<FlagsQuestContextType | null>(null)
@@ -33,6 +35,7 @@ export const FlagsQuestProvider = ({ children, maxQuest = 30 }: { children: JSX.
   const [actualCountryQuest, setActualCountryQuest] = useState(shuffledCountries[actualQuestIndex])
   const [loading, setLoading] = useState<boolean>(true)
   const [regionGame, setRegionGame] = useState<RegionType>(Region.all)
+  const [error, setError] = useState<Boolean>(false)
 
   useEffect(() => {
     suffledCountries()
@@ -59,12 +62,12 @@ export const FlagsQuestProvider = ({ children, maxQuest = 30 }: { children: JSX.
   const addAnswerNameFlag = (input: string): void => {
     setAnswers(prev => {
       return [...prev,
-        {
-          answer: input,
-          flag: shuffledCountries[actualQuestIndex],
-          questIndex: actualQuestIndex,
-          isCorrectAnswer: input === shuffledCountries[actualQuestIndex].translations.spa.common
-        }
+      {
+        answer: input,
+        flag: shuffledCountries[actualQuestIndex],
+        questIndex: actualQuestIndex,
+        isCorrectAnswer: input === shuffledCountries[actualQuestIndex].translations.spa.common
+      }
       ]
     })
     setActualQuestIndex(actualQuestIndex + 1)
@@ -99,7 +102,9 @@ export const FlagsQuestProvider = ({ children, maxQuest = 30 }: { children: JSX.
       regionGame,
       setRegionGame,
       infoActualQuestion,
-      resetAnswers
+      resetAnswers,
+      error,
+      setError
     }}>
       {children}
     </FlagsQuestContext.Provider>

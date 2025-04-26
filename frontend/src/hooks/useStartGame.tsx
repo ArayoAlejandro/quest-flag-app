@@ -7,16 +7,25 @@ import { useFlags } from './useFlags'
 import { useGameState } from './useGameState'
 export const useStartGame = () => {
   const [loading, setLoading] = useState(false)
-  const { setCountries, regionGame, resetFlags } = useFlags()
+  const { setCountries, regionGame, resetFlags, setError } = useFlags()
   const { changeStateGame } = useGameState()
 
   const handleStart = (): void => {
     let apiFetch
-
+    setError(false)
+    
     if (regionGame !== Region.all) {
       apiFetch = getRegionCountry(regionGame)
+        .catch(() => {
+          setError(true)
+          return []
+        })
     } else {
       apiFetch = getAllCountry()
+        .catch(() => {
+          setError(true)
+          return []
+        })
     }
 
     changeStateGame(GAME_STATES.GAME_DEFAULT)

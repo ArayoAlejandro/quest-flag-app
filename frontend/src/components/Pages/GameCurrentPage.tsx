@@ -6,7 +6,7 @@ import { Score } from '../Score'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export const GameCurrentPage = (): JSX.Element => {
-  const { actualCountryQuest, loading, infoActualQuestion, resetAnswers } = useFlags()
+  const { actualCountryQuest, loading, infoActualQuestion, resetAnswers, error } = useFlags()
   const { activateScore } = useScore()
   const { actualQuestIndex, shuffledCountries } = infoActualQuestion()
 
@@ -18,7 +18,7 @@ export const GameCurrentPage = (): JSX.Element => {
     if (!loading) activateScore()
   }, [loading])
 
-  return loading
+  return !error ? loading
     ? <h2>Loading</h2>
     : <AnimatePresence>
       <section className='game'>
@@ -48,4 +48,8 @@ export const GameCurrentPage = (): JSX.Element => {
         <FormFlag />
       </section>
     </AnimatePresence>
+    :
+    <div>
+      <p>Ha habido un error</p>
+    </div>
 }
